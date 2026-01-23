@@ -2,9 +2,9 @@
 # Проект NG-Live 
 
 <p>
-<strong>NG-Live</strong> - Мой первый крупный пэт проект. Аналог соц-сети
+<strong>NG-Live</strong> - Аналог соц-сети
 по типу telegram или instagram. С возможностью AnyDesk 
-(контроль пк на которых установлен клиент)
+(контроль пк на которых установлен cпециальный клиент)
 </p>
 
 
@@ -17,6 +17,7 @@
         - Axios  
         - Socket.io 
         - Redux Toolkit 
+        ... 
 
 - **Main-server**
     - Java 
@@ -27,7 +28,8 @@
             - vertx-redis-client
             - vertx-web-auth-jwt
             - vertx-web-graphql
-
+            ... 
+             
 - **Database**
     - PostgreSQL
     - Redis
@@ -39,10 +41,29 @@
         - CMake
         - uWebSockets
         - GLFW 
+        ... 
 
 
 
 
+## Структура 
+
+<pre>
+<code>
+
+desk-control-app/ <-- Невидимый клиент для контроля пк 
+    ... 
+
+
+main-server/ <-- Backend 
+    ...
+
+
+webapp-client/ <-- Frontend 
+    ... 
+
+</code> 
+</pre>
 
 
 

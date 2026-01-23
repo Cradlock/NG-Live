@@ -1,0 +1,10 @@
+rootProject.name = 'main-server'
+
+include 'common'
+include 'service-user'
+include 'service-gateway'
+include 'service-chat'
+include 'service-notifications'
+include 'service-desk-control'
+include 'service-webrtc'
+
