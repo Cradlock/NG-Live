@@ -4,5 +4,23 @@
 # Ignore Gradle build output directory
 build
 
-
+# Ignore .env 
 .env 
+
+
+
+
+# Ignore tech-trash
+.project 
+.settings/
+bin/
+.classpath
+gradle/
+
+
+# media folder 
+uploads/*
+
+
+
+
