@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+
+    id("com.gradleup.shadow") version "9.3.1"
+}
+
+
+
+group = 'com.nglive'
+version = '0.0.1'
+
+
+repositories {
+  mavenCentral()
+}
+
+application {
+  mainClass = "io.vertx.core.Launcher"
+}
+
+
+
+def vertxVersion = "4.5.4"
+
+dependencies {
+  implementation "io.vertx:vertx-core:$vertxVersion"
+  
+  implementation "io.vertx:vertx-web:$vertxVersion"
+  
+  implementation "io.vertx:vertx-json-schema:$vertxVersion"
+
+  implementation "ch.qos.logback:logback-classic:1.5.0"
+}
+
+
+shadowJar{
+  archiveClassifier.set("fat")
+
+  manifest{
+    attributes(
+      'Main-Class': 'io.vertx.core.Launcher',
+      'Main-Verticle': 'com.nglive.MainVerticle'
+    )
+  }
+
+  mergeServiceFiles()
+}
+
+
+run {
+  args = ['run','com.nglive.MainVerticle']
+}
+
