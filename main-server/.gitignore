@@ -16,7 +16,12 @@ build
 bin/
 .classpath
 gradle/
-
+service-chat/
+service-desk-control/
+service-dateway/
+service-user/
+service-webrtc/
+common/
 
 # media folder 
 uploads/*
