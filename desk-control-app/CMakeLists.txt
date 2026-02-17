@@ -2,22 +2,28 @@ cmake_minimum_required(VERSION 3.15)
 
 project(WsClient)
 
-set(CMAKE_CXX_STANDART 17)
+set(CMAKE_CXX_STANDARD 17)
 
-# 1. Находим Asio
-find_package(asio CONFIG REQUIRED)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# 2. Находим Beast (через пакет Boost)
-find_package(Boost REQUIRED COMPONENTS system) 
-# Примечание: Beast — это header-only, но ему часто нужен boost_system
+
+# Включаем CMakeLists в client-session
+add_subdirectory(client_session)
+
 
 add_executable(app app.cpp)
 
-# 3. Линкуем
-# Нам нужно явно указать путь к заголовкам Boost, если мы используем Beast
-target_link_libraries(app PRIVATE asio::asio)
-target_include_directories(app PRIVATE ${Boost_INCLUDE_DIRS})
-
-# 4. Подключаем кастомные файлы
 
 
+# Подключаем свою мини библиотеку
+target_link_libraries(app PRIVATE client_session)
+
+# Подключение nvim
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
+set(SOURCE_FILE "${CMAKE_BINARY_DIR}/compile_commands.json")
+set(DESTINATION_FILE "${CMAKE_SOURCE_DIR}/compile_commands.json")
+
+if(NOT EXISTS ${DESTINATION_FILE})
+    execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${SOURCE_FILE} ${DESTINATION_FILE})
+endif()
+endif()

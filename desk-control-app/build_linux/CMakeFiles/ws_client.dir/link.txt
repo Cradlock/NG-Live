@@ -1,1 +1,0 @@
-/usr/bin/clang++ -Xlinker --dependency-file=CMakeFiles/ws_client.dir/link.d CMakeFiles/ws_client.dir/app.cpp.o -o ws_client
